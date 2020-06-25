@@ -19,6 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.R;
+import com.example.flixster.databinding.ItemMovieBinding;
 import com.example.flixster.models.Movie;
 
 import org.parceler.Parcels;
@@ -31,6 +32,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
     List<Movie> movies;
     Context context;
+    ItemMovieBinding binding;
 
     public MovieAdapter(Context context, List<Movie> movies){
         this.movies = movies;
@@ -41,7 +43,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Use layout inflator to inflate a view
-        View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie,parent,false);
+        binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.getContext()));
+        View movieView = binding.getRoot();
 
         // wrap it inside a View Holder and return
         return new ViewHolder(movieView);
@@ -68,9 +71,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvOverview = itemView.findViewById(R.id.tvOverview);
-            ivPoster = itemView.findViewById(R.id.ivPoster);
+            tvTitle = binding.tvTitle;
+            tvOverview = binding.tvOverview;
+            ivPoster = binding.ivPoster;
             itemView.setOnClickListener(this);
         }
 
