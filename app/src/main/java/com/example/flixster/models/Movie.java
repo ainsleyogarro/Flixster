@@ -16,6 +16,8 @@ public class Movie {
     String overview;
     String backdropPath;
     Double voteAverage;
+    Integer id;
+    Boolean video;
 
     // default constructor
     public Movie(){}
@@ -26,6 +28,16 @@ public class Movie {
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
         voteAverage = jsonObject.getDouble("vote_average");
+        id = jsonObject.getInt("id");
+        video = jsonObject.getBoolean("video");
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Boolean getVideo() {
+        return video;
     }
 
     public static List<Movie> fromJSonArray(JSONArray movieJsonArray) throws  JSONException{
