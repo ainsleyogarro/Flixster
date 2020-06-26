@@ -37,6 +37,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+Had a hard time implementing youtube in a seperate activity eventually had to implement it into a different activity
+Trying to figure out the exact API request format also took a while
 
 ## Open-source libraries used
 
@@ -45,7 +47,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2020] [Ainsley O'Garro]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
