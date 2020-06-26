@@ -20,7 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/ivPoster"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/tvOverview"
@@ -30,5 +31,6 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ivPoster"
+        android:textColor="#FFFFFF"
         />
 </RelativeLayout>
