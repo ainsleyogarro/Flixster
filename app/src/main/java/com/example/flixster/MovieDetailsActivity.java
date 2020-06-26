@@ -47,6 +47,7 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
         setContentView(view);
         movie = Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
 
+        // Get video id from the poster
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(VIDEO_URL + movie.getId() + "/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", new JsonHttpResponseHandler() {
             @Override
@@ -54,14 +55,16 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
 
                 JSONObject jsonObject = json.jsonObject;
                 try {
+                    // Get youtube key for first video
                     JSONArray results = jsonObject.getJSONArray("results");
                     key = results.getJSONObject(0).getString("key");
                     YouTubePlayerView playerView = binding.player;
+
+                    // Youtube Initialization
                     playerView.initialize(getString(R.string.youtube_api_key), new YouTubePlayer.OnInitializedListener() {
                         @Override
                         public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                             // cue video
-
                             youTubePlayer.cueVideo(key);
                             youTubePlayer.play();
                         }
@@ -72,16 +75,13 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
                             Log.e("MovieTrailerActivity", "Error intializing Youtube player");
                         }
                     });
-                    //Toast.makeText(getApplicationContext(),key, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
-                    //Toast.makeText(getApplicationContext(),"key", Toast.LENGTH_SHORT).show();
+
                     }
-
                 }
-
                 @Override
                 public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-                    Toast.makeText(getApplicationContext(),"Free all my cats", Toast.LENGTH_SHORT).show();
+
                 }
             });
 
@@ -93,7 +93,6 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
         rbVoteAverage.setNumStars((int) (movie.getVoteAverage() / 2.0));
-
 
 
     }
